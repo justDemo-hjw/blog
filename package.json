@@ -4,8 +4,7 @@
   "author": "hjw",
   "scripts": {
     "dev": "vuepress dev . --host 192.168.1.103",
-    "build": "vuepress build .",
-    "deploy": "bash deploy.sh"
+    "build": "vuepress build ."
   },
   "devDependencies": {
     "vuepress": "1.8.2",
