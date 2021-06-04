@@ -4,7 +4,7 @@
  * @LastEditTime: 2021-06-02 18:02:18
 */
 module.exports = {
-  "title": "justDemo‘s的博客",
+  "title": "justDemo的博客",
   "description": "用心总结，逐渐完善知识体系图",
   "dest": "public",
   "head": [
