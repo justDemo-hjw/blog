@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "author": "hjw",
   "scripts": {
-    "dev": "vuepress dev . --host 172.31.13.37",
+    "dev": "vuepress dev . --host 192.168.31.90",
     "build": "vuepress build ."
   },
   "devDependencies": {
