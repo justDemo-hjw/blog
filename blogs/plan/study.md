@@ -72,3 +72,9 @@ categories:
   1. 看shop-render源码
   2. 了解globalUntil中方法作用
   3. 对ice大概熟悉下
+
+### 第一个月总结
+- 赋能后端
+- 热更新
+- 打点
+- 业务开发
