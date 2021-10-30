@@ -1,7 +1,7 @@
 ---
 home: true
 heroText: Stay hungry stay foolish
-tagline: 今天的最好表现，是明天的最低要求！12
+tagline: 事情要现在就做，不然一定不会做
 # heroImage: /hero.png
 # heroImageStyle: {
 #   maxHeight: '200px',
