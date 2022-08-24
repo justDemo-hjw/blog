@@ -1,42 +1,273 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 
-  <head>
-    <meta charset="utf-8">
-    <title>Reactjs in 40 </title>
-    <style media="screen">
-      .like-btn { font-size: 50px; }
-      .wrapper {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-      }
-      .left {
-        height: 30px;
-        width: 100px;
-        background-color: red;
-      }
-      .content {
-        height: 30px;
-        width: 60px;
-        background-color: bisque;
-      }
-      .right {
-        height: 30px;
-        width: 70px;
-        background-color: blue;
-      }
-    </style>
-  </head>
+<head>
+  <meta name="apple-itunes-app" content="app-id=387682726">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>测试 Demo</title>
+  <!-- <script src="//g.alicdn.com/mtb/lib-mtop/2.3.14/mtop.js"></script> -->
+  <style>
+    h1 {
+      text-align: center;
+    }
 
-  <body>
-    <div class='wrapper'>
-      <div class="left"></div>
-      <div class="content"></div>
-      <div class="right"></div>
-    </div>
-  </body>
+    .box {
+      padding-left: 10px;
+    }
 
-  <script type="text/javascript">
+    ul {
+      padding-left: 20px;
+    }
+
+    ul>li {
+      list-style-type: none;
+    }
+
+    .type-scheme {
+      color: #f30;
+    }
+
+    .type-ulk {
+      color: green;
+    }
+
+    .type-intent {
+      color: #06f;
+    }
+
+    .type-disable {
+      color: #cfcfcf;
+    }
+
+    a {
+      opacity: 0.8;
+    }
+
+    a:hover {
+      opacity: 1;
+      font-weight: bold;
+    }
+
+    #pc {
+      display: none;
+    }
+
+    #ios {
+      /* display: none; */
+    }
+
+    #android {
+      display: none;
+    }
+
+    .show {
+      display: block !important;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    var callWithALink = function (url) {
+      console.log('使用 A 链接调用唤端');
+      const a = document.createElement('a');
+      a.setAttribute('href', url + '&t=' + +new Date());
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+    }
+
+    var callWithIframe = function (url) {
+      console.log('使用 Iframe 调用唤端');
+      var iframe = document.createElement('iframe');
+      iframe.frameborder = '0';
+      iframe.style.cssText = 'display:none;border:0;width:0px;height:0px;';
+      document.body.appendChild(iframe);
+      iframe.src = url + '&t=' + +new Date();
+    }
+
+    var callWithLocation = function (url) {
+      console.log('使用 Location 调用唤端');
+      window.location.href = url + '&t=' + +new Date();
+    }
   </script>
+  <h1>测试各种情况的唤端</h1>
+  <a href="./test.html">重置</a>
+  <div>
+    <h2>1. 说明</h2>
+    <ul>
+      <li><span class="type-scheme">红色</span>表示 Scheme 拉端</li>
+      <li><span class="type-ulk">绿色</span>表示 Universal Link 拉端</li>
+      <li><span class="type-intent">蓝色</span>表示 intent 拉端</li>
+    </ul>
+  </div>
+  <h2>2. 测试区</h2>
+  <div id="pc">请在手机环境打开本页面</div>
+  <div id='ios'>
+    <h3>当前环境: iOS</h3>
+    <div class="box">
+      <h3>手动唤端-universalLink</h3>
+      <ul>
+        <li>
+          <a class="type-ulk"
+            href="https://app.alibaba.com/product/1600452824831/New-arrival-car-audio-mp3-1.html?spm=a2706.7843667.0.0.690f34d5MxGRHn&cross=msiteJs&ck=list_awaken&cna=F6SAG%2FnmNhMCASp4SZar8RbK&pageId=2a784ac721318c1f1661349672&prepage1=enalibaba%3A%2F%2FoneSight%3Fbiz%3Dseo%26keyword%3Dmp3&language=">
+            Universal Link (A链接)
+          </a>
+        </li>
+        <li>
+          <a class="type-ulk" href="javascript:void(0);"
+            onclick="callWithALink('https:\/\/app.alibaba.com/product/1600452824831/New-arrival-car-audio-mp3-1.html?spm=a2706.7843667.0.0.690f34d5MxGRHn&cross=msiteJs&ck=list_awaken&cna=F6SAG%2FnmNhMCASp4SZar8RbK&pageId=2a784ac721318c1f1661349672&prepage1=enalibaba%3A%2F%2FoneSight%3Fbiz%3Dseo%26keyword%3Dmp3&language=')">
+            Universal Link (利用 JS 创建 A 链接模拟点击)
+          </a>
+        </li>
+        <li>
+          <a class="type-disable" href="javascript:void(0);"
+            onclick="callWithIframe('https:\/\/app.alibaba.com/product/1600452824831/New-arrival-car-audio-mp3-1.html?spm=a2706.7843667.0.0.690f34d5MxGRHn&cross=msiteJs&ck=list_awaken&cna=F6SAG%2FnmNhMCASp4SZar8RbK&pageId=2a784ac721318c1f1661349672&prepage1=enalibaba%3A%2F%2FoneSight%3Fbiz%3Dseo%26keyword%3Dmp3&language=')">
+            Universal Link (利用 JS 创建 Iframe src 跳转)
+          </a>
+        </li>
+        <li>
+          <a class="type-ulk" href="javascript:void(0);"
+            onclick="callWithLocation('https:\/\/app.alibaba.com/product/1600452824831/New-arrival-car-audio-mp3-1.html?spm=a2706.7843667.0.0.690f34d5MxGRHn&cross=msiteJs&ck=list_awaken&cna=F6SAG%2FnmNhMCASp4SZar8RbK&pageId=2a784ac721318c1f1661349672&prepage1=enalibaba%3A%2F%2FoneSight%3Fbiz%3Dseo%26keyword%3Dmp3&language=')">
+            Universal Link (利用 JS 进行 Location 跳转)
+          </a>
+        </li>
+      </ul>
+      <h3>手动唤端-dynamicLink</h3>
+      <ul>
+        <li>
+          <a class="type-ulk"
+            href="https://app.alibaba.com/dynamiclink?schema=enalibaba%3A%2F%2FiPhoneHome%3F__sceneInfo%3D%257B%2522data%2522%253A%257B%257D%257D%26cross%3DmsiteJs%26ck%3Dwap_force_dialog%26cna%3DF6SAG%252FnmNhMCASp4SZar8RbK%26pageid%3D2a784ac72131851a1661349767%26&click_id=7Ddb7bb7274eb6c711f39UG&medium_source=msite&tp1=%7B%22ck%22%3A%22wap_force_dialog%22%2C%22pageId%22%3A%222a784ac72131851a1661349767%22%2C%22clickTimestamp%22%3A1661349770246%2C%22cna%22%3A%22F6SAG%2FnmNhMCASp4SZar8RbK%22%2C%22language%22%3A%22en_US%22%2C%22username%22%3A%22%22%2C%22aliBeaconId%22%3A%22%22%2C%22isNewUser%22%3Atrue%7D">
+            Universal Link (A链接)
+          </a>
+        </li>
+        <li>
+          <a class="type-ulk" href="javascript:void(0);"
+            onclick="callWithALink('https:\/\/app.alibaba.com/dynamiclink?schema=enalibaba%3A%2F%2FiPhoneHome%3F__sceneInfo%3D%257B%2522data%2522%253A%257B%257D%257D%26cross%3DmsiteJs%26ck%3Dwap_force_dialog%26cna%3DF6SAG%252FnmNhMCASp4SZar8RbK%26pageid%3D2a784ac72131851a1661349767%26&click_id=7Ddb7bb7274eb6c711f39UG&medium_source=msite&tp1=%7B%22ck%22%3A%22wap_force_dialog%22%2C%22pageId%22%3A%222a784ac72131851a1661349767%22%2C%22clickTimestamp%22%3A1661349770246%2C%22cna%22%3A%22F6SAG%2FnmNhMCASp4SZar8RbK%22%2C%22language%22%3A%22en_US%22%2C%22username%22%3A%22%22%2C%22aliBeaconId%22%3A%22%22%2C%22isNewUser%22%3Atrue%7D')">
+            Universal Link (利用 JS 创建 A 链接模拟点击)
+          </a>
+        </li>
+        <li>
+          <a class="type-disable" href="javascript:void(0);"
+            onclick="callWithIframe('https:\/\/app.alibaba.com/dynamiclink?schema=enalibaba%3A%2F%2FiPhoneHome%3F__sceneInfo%3D%257B%2522data%2522%253A%257B%257D%257D%26cross%3DmsiteJs%26ck%3Dwap_force_dialog%26cna%3DF6SAG%252FnmNhMCASp4SZar8RbK%26pageid%3D2a784ac72131851a1661349767%26&click_id=7Ddb7bb7274eb6c711f39UG&medium_source=msite&tp1=%7B%22ck%22%3A%22wap_force_dialog%22%2C%22pageId%22%3A%222a784ac72131851a1661349767%22%2C%22clickTimestamp%22%3A1661349770246%2C%22cna%22%3A%22F6SAG%2FnmNhMCASp4SZar8RbK%22%2C%22language%22%3A%22en_US%22%2C%22username%22%3A%22%22%2C%22aliBeaconId%22%3A%22%22%2C%22isNewUser%22%3Atrue%7D')">
+            Universal Link (利用 JS 创建 Iframe src 跳转)
+          </a>
+        </li>
+        <li>
+          <a class="type-ulk" href="javascript:void(0);"
+            onclick="callWithLocation('https:\/\/app.alibaba.com/dynamiclink?schema=enalibaba%3A%2F%2FiPhoneHome%3F__sceneInfo%3D%257B%2522data%2522%253A%257B%257D%257D%26cross%3DmsiteJs%26ck%3Dwap_force_dialog%26cna%3DF6SAG%252FnmNhMCASp4SZar8RbK%26pageid%3D2a784ac72131851a1661349767%26&click_id=7Ddb7bb7274eb6c711f39UG&medium_source=msite&tp1=%7B%22ck%22%3A%22wap_force_dialog%22%2C%22pageId%22%3A%222a784ac72131851a1661349767%22%2C%22clickTimestamp%22%3A1661349770246%2C%22cna%22%3A%22F6SAG%2FnmNhMCASp4SZar8RbK%22%2C%22language%22%3A%22en_US%22%2C%22username%22%3A%22%22%2C%22aliBeaconId%22%3A%22%22%2C%22isNewUser%22%3Atrue%7D')">
+            Universal Link (利用 JS 进行 Location 跳转)
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div id='android'>
+    <h3>当前环境: Android</h3>
+    <div class="box">
+      <h3>自动唤端</h3>
+      <ul>
+        <li><a class="type-scheme" target="_self"
+            href="testcase.html?auto=true&os=android&type=scheme&callType=alink">Scheme (利用 JS 创建 A 链接模拟点击)</a></li>
+        <li><a class="type-scheme" target="_self"
+            href="testcase.html?auto=true&os=android&type=scheme&callType=iframe">Scheme (利用 JS 创建 Iframe src 跳转)</a>
+        </li>
+        <li><a class="type-disable" href="javascript:void(0);">Scheme (利用 JS 进行 Location 跳转)</a></li>
+        <li><a class="type-intent" target="_self"
+            href="testcase.html?auto=true&os=android&type=intent&callType=location">Intent (利用 JS 进行 Location 跳转)</a>
+        </li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>手动唤端</h3>
+      <ul>
+        <li>
+          <a class="type-scheme"
+            href="tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fmarket.m.taobao.com%2Fapp%2Fpm%2Frax-tesla%2Fpages%2Findex-tao">
+            Scheme (A链接)
+          </a>
+        </li>
+        <li>
+          <a class="type-scheme"
+            href="tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fh5.m.taobao.com%2Fawp%2Fcore%2Fdetail.htm%3Fspm%3Da215s.7406091.recommend.1.560c6770wRjIM5%26id%3D14836099171%26scm%3D1007.18975.103645.0%26pvid%3D6fb14fe3-e681-4199-bdf3-fe8e67433415%26utparam%3D%257B%2522ranger_buckets_native%2522%253A%2522%2522%252C%2522x_object_type%2522%253A%2522item%2522%252C%2522mtx_ab%2522%253A9%252C%2522mtx_sab%2522%253A0%252C%2522scm%2522%253A%25221007.18975.103645.0%2522%252C%2522x_object_id%2522%253A%252214836099171%2522%257D">
+            Scheme (A链接 path 改为 xxx)
+          </a>
+        </li>
+        <li>
+          <a class="type-scheme"
+            href="taobao://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fh5.m.taobao.com%2Fawp%2Fcore%2Fdetail.htm%3Fspm%3Da215s.7406091.recommend.1.560c6770wRjIM5%26id%3D14836099171%26scm%3D1007.18975.103645.0%26pvid%3D6fb14fe3-e681-4199-bdf3-fe8e67433415%26utparam%3D%257B%2522ranger_buckets_native%2522%253A%2522%2522%252C%2522x_object_type%2522%253A%2522item%2522%252C%2522mtx_ab%2522%253A9%252C%2522mtx_sab%2522%253A0%252C%2522scm%2522%253A%25221007.18975.103645.0%2522%252C%2522x_object_id%2522%253A%252214836099171%2522%257D">
+            Scheme (A链接 协议 改为 taobao)
+          </a>
+        </li>
+        <li>
+          <a class="type-scheme"
+            href="eleme://web?url=https%3A%2F%2Fh5.m.taobao.com%2Fawp%2Fcore%2Fdetail.htm%3Fspm%3Da215s.7406091.recommend.1.560c6770wRjIM5%26id%3D14836099171%26scm%3D1007.18975.103645.0%26pvid%3D6fb14fe3-e681-4199-bdf3-fe8e67433415%26utparam%3D%257B%2522ranger_buckets_native%2522%253A%2522%2522%252C%2522x_object_type%2522%253A%2522item%2522%252C%2522mtx_ab%2522%253A9%252C%2522mtx_sab%2522%253A0%252C%2522scm%2522%253A%25221007.18975.103645.0%2522%252C%2522x_object_id%2522%253A%252214836099171%2522%257D">
+            Eleme
+          </a>
+        </li>
+        <li><a class="type-scheme" href="javascript:void(0);"
+            onclick="callWithALink('tbopen:\/\/m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fmarket.m.taobao.com%2Fapp%2Fpm%2Frax-tesla%2Fpages%2Findex-tao')">Scheme
+            (利用 JS 创建 A 链接模拟点击)</a></li>
+        <li><a class="type-scheme" href="javascript:void(0);"
+            onclick="callWithIframe('tbopen:\/\/m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fmarket.m.taobao.com%2Fapp%2Fpm%2Frax-tesla%2Fpages%2Findex-tao')">Scheme
+            (利用 JS 创建 Iframe src 跳转)</a></li>
+        <li><a class="type-disable" href="javascript:void(0);"
+            onclick="callWithLocation('tbopen:\/\/m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fmarket.m.taobao.com%2Fapp%2Fpm%2Frax-tesla%2Fpages%2Findex-tao')">Scheme
+            (利用 JS 进行 Location 跳转)</a></li>
+        <li><a class="type-intent" href="javascript:void(0);"
+            onclick="callWithLocation('intent:\/\/m.taobao.com/tbopen/index.html?h5Url='+encodeURIComponent('https:\/\/market.m.taobao.com/app/pm/rax-tesla/pages/index-tao')+'#Intent;scheme=tbopen;package=com.taobao.taobao;end')">Intent
+            (利用 JS 进行 Location 跳转)</a></li>
+      </ul>
+    </div>
+  </div>
+  <script>
+    function getQueryParam(url) {
+      var queryStr = (url || window.location.href).split('?')[1] || '';
+
+      const paramArr = queryStr.split('&');
+
+      const result = {};
+      paramArr.forEach(function (o, i) {
+        const tempArr = o.split('=');
+        result[tempArr[0]] = tempArr[1];
+      });
+      return result;
+    }
+    var a = getQueryParam();
+    var url = '';
+    if (a.type && a.callType) {
+      if (a.type === 'scheme') {
+        url = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fmarket.m.taobao.com%2Fapp%2Fpm%2Frax-tesla%2Fpages%2Findex-tao';
+      } else if (a.type === 'intent') {
+        url = 'intent://m.taobao.com/tbopen/index.html?h5Url=' + encodeURIComponent('https://market.m.taobao.com/app/pm/rax-tesla/pages/index-tao') + '#Intent;scheme=tbopen;package=com.taobao.taobao;end';
+      }
+      alert('开始执行自动唤端');
+      setTimeout(function () {
+        if (a.callType === 'alink') {
+          callWithALink(url);
+        } else if (a.callType === 'iframe') {
+          callWithIframe(url);
+        } else if (a.callType === 'location') {
+          callWithLocation(url);
+        }
+      }, 0);
+    }
+    (function () {
+      var ua = window.navigator.userAgent;
+      var isIOS = !!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+      var isAndroid = ua.indexOf('Android') > -1 || ua.indexOf('Adr') > -1;
+      const isPC = !isIOS && !isAndroid;
+
+      if (isIOS) {
+        document.getElementById('ios').className = 'show';
+      } else if (isAndroid) {
+        document.getElementById('android').className = 'show';
+      } else {
+        document.getElementById('pc').className = 'show';
+      }
+    })();
+  </script>
+</body>
+
 </html>
